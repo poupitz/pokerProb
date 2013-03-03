@@ -8,10 +8,10 @@ package org.poupitz.dev.model;
 public class Carte implements Comparable<Object>{
 	
 	/** The valeur. */
-	private String valeur;
+	private ValeurCarte valeur;
 	
 	/** The couleur. */
-	private String couleur;
+	private CouleurCarte couleur;
 	
 	/**
 	 * Instantiates a new carte.
@@ -19,7 +19,7 @@ public class Carte implements Comparable<Object>{
 	 * @param valeur the valeur
 	 * @param couleur the couleur
 	 */
-	public Carte(String valeur, String couleur){
+	public Carte(ValeurCarte valeur, CouleurCarte couleur){
 		this.valeur = valeur;
 		this.couleur = couleur;
 	}
@@ -30,7 +30,7 @@ public class Carte implements Comparable<Object>{
 	 *
 	 * @return the valeur
 	 */
-	public String getValeur() {
+	public ValeurCarte getValeur() {
 		return valeur;
 	}
 	
@@ -39,7 +39,7 @@ public class Carte implements Comparable<Object>{
 	 *
 	 * @param valeur the new valeur
 	 */
-	public void setValeur(String valeur) {
+	public void setValeur(ValeurCarte valeur) {
 		this.valeur = valeur;
 	}
 	
@@ -48,7 +48,7 @@ public class Carte implements Comparable<Object>{
 	 *
 	 * @return the couleur
 	 */
-	public String getCouleur() {
+	public CouleurCarte getCouleur() {
 		return couleur;
 	}
 	
@@ -57,7 +57,7 @@ public class Carte implements Comparable<Object>{
 	 *
 	 * @param couleur the new couleur
 	 */
-	public void setCouleur(String couleur) {
+	public void setCouleur(CouleurCarte couleur) {
 		this.couleur = couleur;
 	}
 	
