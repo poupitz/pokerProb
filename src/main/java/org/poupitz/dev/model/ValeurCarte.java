@@ -2,5 +2,5 @@ package org.poupitz.dev.model;
 
 public enum ValeurCarte {
 
-	AS, ROI, DAME, VALET, DIX, NEUF, HUIT, SEPT, SIX, CINQ, QUATRE, TROIS, DEUX;
+	DEUX,TROIS,QUATRE,CINQ,SIX,SEPT,HUIT,NEUF,DIX,VALET,DAME,ROI,AS;
 }
