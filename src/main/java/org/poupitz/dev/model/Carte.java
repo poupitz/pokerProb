@@ -3,9 +3,8 @@ package org.poupitz.dev.model;
 /**
  * The Class Carte.
  * 
- * @author Vincent
  */
-public class Carte implements Comparable<Object> {
+public class Carte implements ICarte, Comparable<Object> {
 
 	/** The valeur. */
 	private ValeurCarte valeur;
@@ -106,10 +105,10 @@ public class Carte implements Comparable<Object> {
 		return 13 * valeur.hashCode() + 4 * couleur.hashCode();
 	}
 
-	@Override
 	/**
 	 * Ne compare que la valeur des cartes.
 	 */
+	@Override
 	public int compareTo(Object carte) {
 
 		int result = this.getValeur().compareTo(((Carte) carte).getValeur());
