@@ -2,7 +2,7 @@ package org.poupitz.dev.model;
 
 public class Carte implements ICarte, Comparable<Object> {
 
-	/* PROPRIETES */
+	/* ATTRIBUTS */
 	private ValeurCarte valeur;
 	private CouleurCarte couleur;
 
