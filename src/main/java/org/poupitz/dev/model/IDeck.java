@@ -4,4 +4,6 @@ public interface IDeck {
 
 	public void genererDeck();
 
+	public void melangerDeck();
+
 }
