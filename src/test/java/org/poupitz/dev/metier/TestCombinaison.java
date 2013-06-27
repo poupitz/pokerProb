@@ -71,4 +71,99 @@ public class TestCombinaison {
 
 	}
 
+	@Test
+	public void testIsBrelan() throws CarteIdentiqueException,
+			NombreCarteException {
+
+		Main main = new Main();
+		main.ajouterCarte(new Carte(ValeurCarte.AS, CouleurCarte.CARREAU));
+		main.ajouterCarte(new Carte(ValeurCarte.CINQ, CouleurCarte.COEUR));
+
+		Plateau plateau = new Plateau();
+		plateau.ajouterCarte(new Carte(ValeurCarte.SEPT, CouleurCarte.PIQUE));
+		plateau.ajouterCarte(new Carte(ValeurCarte.TROIS, CouleurCarte.CARREAU));
+		plateau.ajouterCarte(new Carte(ValeurCarte.TROIS, CouleurCarte.TREFLE));
+		plateau.ajouterCarte(new Carte(ValeurCarte.TROIS, CouleurCarte.COEUR));
+		plateau.ajouterCarte(new Carte(ValeurCarte.VALET, CouleurCarte.COEUR));
+
+		assertTrue(new Combinaison().isBrelan(main, plateau));
+
+	}
+
+	@Test
+	public void testIsCarre() throws CarteIdentiqueException,
+			NombreCarteException {
+
+		Main main = new Main();
+		main.ajouterCarte(new Carte(ValeurCarte.AS, CouleurCarte.CARREAU));
+		main.ajouterCarte(new Carte(ValeurCarte.TROIS, CouleurCarte.PIQUE));
+
+		Plateau plateau = new Plateau();
+		plateau.ajouterCarte(new Carte(ValeurCarte.SEPT, CouleurCarte.PIQUE));
+		plateau.ajouterCarte(new Carte(ValeurCarte.TROIS, CouleurCarte.CARREAU));
+		plateau.ajouterCarte(new Carte(ValeurCarte.TROIS, CouleurCarte.TREFLE));
+		plateau.ajouterCarte(new Carte(ValeurCarte.TROIS, CouleurCarte.COEUR));
+		plateau.ajouterCarte(new Carte(ValeurCarte.VALET, CouleurCarte.COEUR));
+
+		assertTrue(new Combinaison().isCarre(main, plateau));
+
+	}
+
+	@Test
+	public void testIsFull() throws CarteIdentiqueException,
+			NombreCarteException {
+
+		Main main = new Main();
+		main.ajouterCarte(new Carte(ValeurCarte.AS, CouleurCarte.CARREAU));
+		main.ajouterCarte(new Carte(ValeurCarte.CINQ, CouleurCarte.COEUR));
+
+		Plateau plateau = new Plateau();
+		plateau.ajouterCarte(new Carte(ValeurCarte.SEPT, CouleurCarte.PIQUE));
+		plateau.ajouterCarte(new Carte(ValeurCarte.TROIS, CouleurCarte.CARREAU));
+		plateau.ajouterCarte(new Carte(ValeurCarte.TROIS, CouleurCarte.TREFLE));
+		plateau.ajouterCarte(new Carte(ValeurCarte.TROIS, CouleurCarte.COEUR));
+		plateau.ajouterCarte(new Carte(ValeurCarte.AS, CouleurCarte.COEUR));
+
+		assertTrue(new Combinaison().isFull(main, plateau));
+
+	}
+
+	@Test
+	public void isNotFullButCarre() throws CarteIdentiqueException,
+			NombreCarteException {
+
+		Main main = new Main();
+		main.ajouterCarte(new Carte(ValeurCarte.AS, CouleurCarte.CARREAU));
+		main.ajouterCarte(new Carte(ValeurCarte.AS, CouleurCarte.COEUR));
+
+		Plateau plateau = new Plateau();
+		plateau.ajouterCarte(new Carte(ValeurCarte.AS, CouleurCarte.PIQUE));
+		plateau.ajouterCarte(new Carte(ValeurCarte.TROIS, CouleurCarte.CARREAU));
+		plateau.ajouterCarte(new Carte(ValeurCarte.TROIS, CouleurCarte.TREFLE));
+		plateau.ajouterCarte(new Carte(ValeurCarte.TROIS, CouleurCarte.COEUR));
+		plateau.ajouterCarte(new Carte(ValeurCarte.AS, CouleurCarte.TREFLE));
+
+		assertFalse(new Combinaison().isFull(main, plateau));
+
+	}
+
+	@Test
+	public void isCouleur() throws CarteIdentiqueException,
+			NombreCarteException {
+
+		Main main = new Main();
+		main.ajouterCarte(new Carte(ValeurCarte.AS, CouleurCarte.COEUR));
+		main.ajouterCarte(new Carte(ValeurCarte.CINQ, CouleurCarte.COEUR));
+
+		Plateau plateau = new Plateau();
+		plateau.ajouterCarte(new Carte(ValeurCarte.SEPT, CouleurCarte.COEUR));
+		plateau.ajouterCarte(new Carte(ValeurCarte.TROIS, CouleurCarte.CARREAU));
+		plateau.ajouterCarte(new Carte(ValeurCarte.QUATRE, CouleurCarte.COEUR));
+		plateau.ajouterCarte(new Carte(ValeurCarte.TROIS, CouleurCarte.PIQUE));
+		plateau.ajouterCarte(new Carte(ValeurCarte.VALET, CouleurCarte.COEUR));
+
+		assertTrue(new Combinaison().isCouleur(main, plateau));
+
+	}
+
 }
