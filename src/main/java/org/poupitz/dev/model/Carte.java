@@ -1,6 +1,6 @@
 package org.poupitz.dev.model;
 
-public class Carte implements ICarte, Comparable<Object> {
+public class Carte implements Comparable<Object> {
 
 	/* ATTRIBUTS */
 	private ValeurCarte valeur;
@@ -50,19 +50,7 @@ public class Carte implements ICarte, Comparable<Object> {
 	@Override
 	public int compareTo(Object carte) {
 
-		int result = this.getValeur().compareTo(((Carte) carte).getValeur());
-
-		// if (result < 0) {
-		// System.out
-		// .println("La première carte est de valeur inférieure à la deuxième.");
-		// } else if (result > 0) {
-		// System.out
-		// .println("La première carte est de valeur supérieure à la deuxième.");
-		// } else if (result == 0) {
-		// System.out.println("Les deux cartes sont de même valeur.");
-		// }
-
-		return result;
+		return this.getValeur().compareTo(((Carte) carte).getValeur());
 	}
 
 	/* GETTERS ET SETTERS */

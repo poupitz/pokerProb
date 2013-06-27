@@ -2,29 +2,42 @@ package org.poupitz.dev.model;
 
 import org.junit.Test;
 import org.poupitz.dev.exception.CarteIdentiqueException;
+import org.poupitz.dev.exception.NombreCarteException;
 
 public class TestMain {
 
 	@Test
-	public void testMain() throws CarteIdentiqueException {
+	public void testMainCorrecte() throws CarteIdentiqueException,
+			NombreCarteException {
 
 		/*
 		 * Test en cas nominal pour assurer une non regression : normalement pas
 		 * d'exception levée
 		 */
-		Carte carte_1 = new Carte(ValeurCarte.SIX, CouleurCarte.TREFLE);
-		Carte carte_2 = new Carte(ValeurCarte.HUIT, CouleurCarte.COEUR);
-
-		Main main = new Main(carte_1, carte_2);
+		Main main = new Main();
+		main.ajouterCarte(new Carte(ValeurCarte.SIX, CouleurCarte.TREFLE));
+		main.ajouterCarte(new Carte(ValeurCarte.HUIT, CouleurCarte.COEUR));
 
 	}
 
 	@Test(expected = CarteIdentiqueException.class)
-	public void testMainIncorrecteException() throws CarteIdentiqueException {
+	public void testMainIncorrecteCarteIdentique()
+			throws CarteIdentiqueException, NombreCarteException {
 
-		Carte carte = new Carte(ValeurCarte.AS, CouleurCarte.CARREAU);
+		Main main = new Main();
+		main.ajouterCarte(new Carte(ValeurCarte.AS, CouleurCarte.CARREAU));
+		main.ajouterCarte(new Carte(ValeurCarte.AS, CouleurCarte.CARREAU));
 
-		Main main = new Main(carte, carte);
+	}
+
+	@Test(expected = NombreCarteException.class)
+	public void testMainIncorrecteTropDeCarte() throws CarteIdentiqueException,
+			NombreCarteException {
+
+		Main main = new Main();
+		main.ajouterCarte(new Carte(ValeurCarte.SIX, CouleurCarte.TREFLE));
+		main.ajouterCarte(new Carte(ValeurCarte.HUIT, CouleurCarte.COEUR));
+		main.ajouterCarte(new Carte(ValeurCarte.AS, CouleurCarte.CARREAU));
 
 	}
 

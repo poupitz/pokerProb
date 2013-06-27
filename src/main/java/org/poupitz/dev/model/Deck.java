@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Deck implements IDeck {
+public class Deck {
 
 	/* ATTRIBUTS */
 	private List<Carte> deck = null;
@@ -17,7 +17,6 @@ public class Deck implements IDeck {
 	}
 
 	/* METHODES */
-	@Override
 	public void genererDeck() {
 
 		for (CouleurCarte couleur : CouleurCarte.values()) {
@@ -31,18 +30,23 @@ public class Deck implements IDeck {
 		}
 
 		// System.out.println("Taille du deck : " + this.getDeck().size());
-		System.out.println("Deck après génération");
-		System.out.println(this.toString());
+		// System.out.println("Deck après génération");
+		// System.out.println(this.toString());
 
 	}
 
-	@Override
 	public void melangerDeck() {
 
 		Collections.shuffle(this.getDeck());
 
-		System.out.println(("Deck après mélange"));
-		System.out.println(this.toString());
+		// System.out.println(("Deck après mélange"));
+		// System.out.println(this.toString());
+
+	}
+
+	public void removeCarte(Carte carte) {
+
+		this.deck.remove(carte);
 
 	}
 
@@ -80,10 +84,6 @@ public class Deck implements IDeck {
 	/* GETTERS ET SETTERS */
 	public List<Carte> getDeck() {
 		return deck;
-	}
-
-	public void setDeck(List<Carte> deck) {
-		this.deck = deck;
 	}
 
 }

@@ -5,13 +5,13 @@ import java.util.HashSet;
 import org.poupitz.dev.exception.CarteIdentiqueException;
 import org.poupitz.dev.exception.NombreCarteException;
 
-public class Main {
+public class Plateau {
 
 	/* ATTRIBUTS */
 	private final HashSet<Carte> cartes;
 
-	/* CONSTRUCTEURS */
-	public Main() {
+	/* CONSTRUCTEUR */
+	public Plateau() {
 		cartes = new HashSet<Carte>();
 	}
 
@@ -20,18 +20,16 @@ public class Main {
 			NombreCarteException {
 		if (!cartes.add(carte))
 			throw new CarteIdentiqueException(
-					"Les deux cartes de la main sont identiques.");
+					"Au moins deux cartes sont identiques dans ce plateau.");
 
-		if (cartes.size() > 2) {
+		if (cartes.size() > 5)
 			throw new NombreCarteException(
-					"Il ne peut pas y avoir plus de deux cartes dans une main.");
-
-		}
+					"Il ne peut pas y avoir plus de cinq cartes dans un plateau.");
 	}
 
 	@Override
 	public String toString() {
-		return "Main [cartes=" + cartes + "]";
+		return "Plateau [cartes=" + cartes + "]";
 	}
 
 	/* GETTERS ET SETTERS */
