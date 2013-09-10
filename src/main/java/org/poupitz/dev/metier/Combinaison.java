@@ -280,22 +280,26 @@ public class Combinaison implements ICombinaison {
 			ValeurCarte valeurCarte4 = cartes.get(i + 3);
 			ValeurCarte valeurCarte5 = cartes.get(i + 4);
 
-			if (valeurCarte1.getNext().equals(valeurCarte2)
-					&& valeurCarte2.getNext().equals(valeurCarte3)
-					&& valeurCarte3.getNext().equals(valeurCarte4)
-					&& valeurCarte4.getNext().equals(valeurCarte5)) {
-				this.isSuite = true;
+			try {
+				if (valeurCarte1.getNext().equals(valeurCarte2)
+						&& valeurCarte2.getNext().equals(valeurCarte3)
+						&& valeurCarte3.getNext().equals(valeurCarte4)
+						&& valeurCarte4.getNext().equals(valeurCarte5)) {
+					this.isSuite = true;
 
-			} else if (valeurCarte1.getNext().equals(valeurCarte2)
-					&& valeurCarte2.getNext().equals(valeurCarte3)
-					&& valeurCarte3.getNext().equals(valeurCarte4)
-					&& cartes.contains(ValeurCarte.AS)
-					&& valeurCarte1.equals(ValeurCarte.DEUX)) {
+				} else if (valeurCarte1.getNext().equals(valeurCarte2)
+						&& valeurCarte2.getNext().equals(valeurCarte3)
+						&& valeurCarte3.getNext().equals(valeurCarte4)
+						&& cartes.contains(ValeurCarte.AS)
+						&& valeurCarte1.equals(ValeurCarte.DEUX)) {
 
-				this.isSuite = true;
+					this.isSuite = true;
 
+				}
+
+			} catch (NullPointerException e) {
+				System.out.println(e);
 			}
-
 		}
 
 	}
