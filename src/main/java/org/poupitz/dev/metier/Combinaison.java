@@ -1,6 +1,7 @@
 package org.poupitz.dev.metier;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -21,6 +22,7 @@ public class Combinaison implements ICombinaison {
 	private boolean isFull = false;
 	private boolean isCarre = false;
 	private boolean isCouleur = false;
+	private boolean isSuite = false;
 
 	// Pour ne jouer qu'une fois l'algo
 	private boolean doublonCalc = false;
@@ -49,8 +51,8 @@ public class Combinaison implements ICombinaison {
 
 	@Override
 	public boolean isSuite(Main main, Plateau plateau) {
-		// TODO Auto-generated method stub
-		return false;
+		combinaisonSuite(main, plateau);
+		return this.isSuite;
 	}
 
 	@Override
@@ -251,5 +253,50 @@ public class Combinaison implements ICombinaison {
 				this.isCouleur = true;
 
 		}
+	}
+
+	private void combinaisonSuite(Main main, Plateau plateau) {
+
+		/* DECLARATION */
+		List<ValeurCarte> cartes = new ArrayList<ValeurCarte>();
+
+		/* INITIALISATION */
+		for (Carte carte : main.getCartes()) {
+			cartes.add(carte.getValeur());
+		}
+
+		for (Carte carte : plateau.getCartes()) {
+			cartes.add(carte.getValeur());
+		}
+
+		Collections.sort(cartes);
+		// System.out.println(cartes);
+
+		for (int i = 0; i < 3; i++) {
+
+			ValeurCarte valeurCarte1 = cartes.get(i);
+			ValeurCarte valeurCarte2 = cartes.get(i + 1);
+			ValeurCarte valeurCarte3 = cartes.get(i + 2);
+			ValeurCarte valeurCarte4 = cartes.get(i + 3);
+			ValeurCarte valeurCarte5 = cartes.get(i + 4);
+
+			if (valeurCarte1.getNext().equals(valeurCarte2)
+					&& valeurCarte2.getNext().equals(valeurCarte3)
+					&& valeurCarte3.getNext().equals(valeurCarte4)
+					&& valeurCarte4.getNext().equals(valeurCarte5)) {
+				this.isSuite = true;
+
+			} else if (valeurCarte1.getNext().equals(valeurCarte2)
+					&& valeurCarte2.getNext().equals(valeurCarte3)
+					&& valeurCarte3.getNext().equals(valeurCarte4)
+					&& cartes.contains(ValeurCarte.AS)
+					&& valeurCarte1.equals(ValeurCarte.DEUX)) {
+
+				this.isSuite = true;
+
+			}
+
+		}
+
 	}
 }

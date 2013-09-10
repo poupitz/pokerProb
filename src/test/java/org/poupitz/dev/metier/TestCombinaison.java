@@ -166,4 +166,54 @@ public class TestCombinaison {
 
 	}
 
+	@Test
+	public void isSuite() throws CarteIdentiqueException, NombreCarteException {
+		Main main = new Main();
+		main.ajouterCarte(new Carte(ValeurCarte.AS, CouleurCarte.COEUR));
+		main.ajouterCarte(new Carte(ValeurCarte.CINQ, CouleurCarte.COEUR));
+
+		Plateau plateau = new Plateau();
+		plateau.ajouterCarte(new Carte(ValeurCarte.SEPT, CouleurCarte.COEUR));
+		plateau.ajouterCarte(new Carte(ValeurCarte.TROIS, CouleurCarte.CARREAU));
+		plateau.ajouterCarte(new Carte(ValeurCarte.QUATRE, CouleurCarte.COEUR));
+		plateau.ajouterCarte(new Carte(ValeurCarte.SIX, CouleurCarte.PIQUE));
+		plateau.ajouterCarte(new Carte(ValeurCarte.NEUF, CouleurCarte.COEUR));
+
+		assertTrue(new Combinaison().isSuite(main, plateau));
+	}
+
+	@Test
+	public void isNotSuite() throws CarteIdentiqueException,
+			NombreCarteException {
+		Main main = new Main();
+		main.ajouterCarte(new Carte(ValeurCarte.AS, CouleurCarte.COEUR));
+		main.ajouterCarte(new Carte(ValeurCarte.CINQ, CouleurCarte.COEUR));
+
+		Plateau plateau = new Plateau();
+		plateau.ajouterCarte(new Carte(ValeurCarte.VALET, CouleurCarte.COEUR));
+		plateau.ajouterCarte(new Carte(ValeurCarte.TROIS, CouleurCarte.CARREAU));
+		plateau.ajouterCarte(new Carte(ValeurCarte.QUATRE, CouleurCarte.COEUR));
+		plateau.ajouterCarte(new Carte(ValeurCarte.SIX, CouleurCarte.PIQUE));
+		plateau.ajouterCarte(new Carte(ValeurCarte.NEUF, CouleurCarte.COEUR));
+
+		assertFalse(new Combinaison().isSuite(main, plateau));
+	}
+
+	@Test
+	public void isSuiteBeginAce() throws CarteIdentiqueException,
+			NombreCarteException {
+		Main main = new Main();
+		main.ajouterCarte(new Carte(ValeurCarte.AS, CouleurCarte.COEUR));
+		main.ajouterCarte(new Carte(ValeurCarte.CINQ, CouleurCarte.COEUR));
+
+		Plateau plateau = new Plateau();
+		plateau.ajouterCarte(new Carte(ValeurCarte.TROIS, CouleurCarte.COEUR));
+		plateau.ajouterCarte(new Carte(ValeurCarte.DEUX, CouleurCarte.CARREAU));
+		plateau.ajouterCarte(new Carte(ValeurCarte.QUATRE, CouleurCarte.COEUR));
+		plateau.ajouterCarte(new Carte(ValeurCarte.VALET, CouleurCarte.PIQUE));
+		plateau.ajouterCarte(new Carte(ValeurCarte.NEUF, CouleurCarte.COEUR));
+
+		assertTrue(new Combinaison().isSuite(main, plateau));
+	}
+
 }
