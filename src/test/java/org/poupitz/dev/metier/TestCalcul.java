@@ -20,9 +20,9 @@ public class TestCalcul {
 		main.ajouterCarte(new Carte(ValeurCarte.AS, CouleurCarte.PIQUE));
 		Deck deck = new Deck();
 
-		PlateauPreFlop pla = new PlateauPreFlop(main, deck);
+		Calcul calc = new Calcul(main, deck);
 
-		pla.calculerCombinaison();
+		calc.preFlop();
 
 	}
 
